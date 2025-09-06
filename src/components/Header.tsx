@@ -11,10 +11,12 @@ const Header = () => {
     <header className="bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <h1 className="text-2xl font-bold text-construction-blue">
-              Merit Construction & Design
-            </h1>
+          <div className="flex items-center space-x-3">
+            <img 
+              src="/lovable-uploads/d3c9e278-96c2-43e6-91db-b3fb5d37e0df.png" 
+              alt="Merit Construction & Design Logo" 
+              className="h-10 md:h-12 w-auto"
+            />
             <span className="text-sm text-muted-foreground hidden md:block">
               Lic #1072096
             </span>
