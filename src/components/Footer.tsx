@@ -37,8 +37,8 @@ const Footer = () => {
               </div>
               <div className="flex items-center">
                 <Mail className="w-5 h-5 mr-3 text-construction-accent" />
-                <a href="mailto:elsa@gmail.com" className="hover:text-construction-accent transition-colors">
-                  elsa@gmail.com
+                <a href="mailto:osorioelva@gmail.com" className="hover:text-construction-accent transition-colors">
+                  osorioelva@gmail.com
                 </a>
               </div>
               <div className="flex items-start">
