@@ -2,9 +2,95 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, CheckCircle } from "lucide-react";
+import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: "",
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Basic validation
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone) {
+      toast({
+        title: "Missing Information",
+        description: "Please fill in all required fields.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast({
+        title: "Invalid Email",
+        description: "Please enter a valid email address.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const { data, error } = await supabase.functions.invoke('submit-quote-request', {
+        body: formData
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      setIsSubmitted(true);
+      toast({
+        title: "Quote Request Sent!",
+        description: "We'll respond within 24 hours. Check your email for confirmation.",
+      });
+
+      // Reset form
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        service: "",
+        message: "",
+      });
+
+    } catch (error: any) {
+      console.error('Error submitting quote request:', error);
+      toast({
+        title: "Submission Failed",
+        description: "Please try again or call us at (323) 610-9999.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-20 bg-construction-light">
       <div className="container mx-auto px-4">
@@ -101,96 +187,134 @@ const Contact = () => {
               <CardTitle className="text-2xl text-construction-dark">Request a Quote</CardTitle>
             </CardHeader>
             <CardContent>
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="firstName" className="block text-sm font-medium text-construction-dark mb-2">
-                      First Name *
-                    </label>
-                    <Input 
-                      id="firstName" 
-                      placeholder="Your first name"
-                      className="border-border focus:ring-construction-blue focus:border-construction-blue"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="lastName" className="block text-sm font-medium text-construction-dark mb-2">
-                      Last Name *
-                    </label>
-                    <Input 
-                      id="lastName" 
-                      placeholder="Your last name"
-                      className="border-border focus:ring-construction-blue focus:border-construction-blue"
-                    />
-                  </div>
-                </div>
-                
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-construction-dark mb-2">
-                    Email *
-                  </label>
-                  <Input 
-                    id="email" 
-                    type="email" 
-                    placeholder="your@email.com"
-                    className="border-border focus:ring-construction-blue focus:border-construction-blue"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-construction-dark mb-2">
-                    Phone *
-                  </label>
-                  <Input 
-                    id="phone" 
-                    type="tel" 
-                    placeholder="(555) 123-4567"
-                    className="border-border focus:ring-construction-blue focus:border-construction-blue"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-construction-dark mb-2">
-                    Service Needed
-                  </label>
-                  <select 
-                    id="service"
-                    className="w-full px-3 py-2 border border-border rounded-md focus:ring-construction-blue focus:border-construction-blue"
+              {isSubmitted ? (
+                <div className="text-center py-8">
+                  <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+                  <h3 className="text-xl font-semibold text-construction-dark mb-2">
+                    Quote Request Sent!
+                  </h3>
+                  <p className="text-muted-foreground mb-4">
+                    Thank you for contacting Merit Construction & Design. We'll respond within 24 hours.
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    Check your email for a confirmation message.
+                  </p>
+                  <Button 
+                    onClick={() => setIsSubmitted(false)}
+                    className="mt-4 bg-construction-blue hover:bg-construction-blue/90"
                   >
-                    <option value="">Select a service</option>
-                    <option value="roofing">Roofing Services</option>
-                    <option value="adu">ADU Construction</option>
-                    <option value="addition">Room Addition</option>
-                    <option value="new-construction">New Construction</option>
-                    <option value="remodeling">Kitchen/Bath Remodeling</option>
-                    <option value="restoration">Fire/Water Restoration</option>
-                    <option value="other">Other</option>
-                  </select>
+                    Send Another Request
+                  </Button>
                 </div>
-                
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-construction-dark mb-2">
-                    Project Details
-                  </label>
-                  <Textarea 
-                    id="message" 
-                    placeholder="Please describe your project, timeline, and any specific requirements..."
-                    rows={4}
-                    className="border-border focus:ring-construction-blue focus:border-construction-blue"
-                  />
-                </div>
-                
-                <Button 
-                  type="submit" 
-                  className="w-full bg-construction-blue hover:bg-construction-blue/90 text-white py-3 text-lg font-semibold"
-                >
-                  Send Request
-                </Button>
-                
-                <p className="text-sm text-muted-foreground text-center">
-                  * Required fields. We'll respond within 24 hours.
-                </p>
-              </form>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="firstName" className="block text-sm font-medium text-construction-dark mb-2">
+                        First Name *
+                      </label>
+                      <Input 
+                        id="firstName" 
+                        value={formData.firstName}
+                        onChange={handleInputChange}
+                        placeholder="Your first name"
+                        className="border-border focus:ring-construction-blue focus:border-construction-blue"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="lastName" className="block text-sm font-medium text-construction-dark mb-2">
+                        Last Name *
+                      </label>
+                      <Input 
+                        id="lastName" 
+                        value={formData.lastName}
+                        onChange={handleInputChange}
+                        placeholder="Your last name"
+                        className="border-border focus:ring-construction-blue focus:border-construction-blue"
+                        required
+                      />
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-construction-dark mb-2">
+                      Email *
+                    </label>
+                    <Input 
+                      id="email" 
+                      type="email" 
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="your@email.com"
+                      className="border-border focus:ring-construction-blue focus:border-construction-blue"
+                      required
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-construction-dark mb-2">
+                      Phone *
+                    </label>
+                    <Input 
+                      id="phone" 
+                      type="tel" 
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      placeholder="(555) 123-4567"
+                      className="border-border focus:ring-construction-blue focus:border-construction-blue"
+                      required
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="service" className="block text-sm font-medium text-construction-dark mb-2">
+                      Service Needed
+                    </label>
+                    <select 
+                      id="service"
+                      value={formData.service}
+                      onChange={handleInputChange}
+                      className="w-full px-3 py-2 border border-border rounded-md focus:ring-construction-blue focus:border-construction-blue"
+                    >
+                      <option value="">Select a service</option>
+                      <option value="roofing">Roofing Services</option>
+                      <option value="adu">ADU Construction</option>
+                      <option value="addition">Room Addition</option>
+                      <option value="new-construction">New Construction</option>
+                      <option value="remodeling">Kitchen/Bath Remodeling</option>
+                      <option value="restoration">Fire/Water Restoration</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-construction-dark mb-2">
+                      Project Details
+                    </label>
+                    <Textarea 
+                      id="message" 
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      placeholder="Please describe your project, timeline, and any specific requirements..."
+                      rows={4}
+                      className="border-border focus:ring-construction-blue focus:border-construction-blue"
+                    />
+                  </div>
+                  
+                  <Button 
+                    type="submit" 
+                    disabled={isSubmitting}
+                    className="w-full bg-construction-blue hover:bg-construction-blue/90 text-white py-3 text-lg font-semibold disabled:opacity-50"
+                  >
+                    {isSubmitting ? "Sending..." : "Send Request"}
+                  </Button>
+                  
+                  <p className="text-sm text-muted-foreground text-center">
+                    * Required fields. We'll respond within 24 hours.
+                  </p>
+                </form>
+              )}
             </CardContent>
           </Card>
         </div>
