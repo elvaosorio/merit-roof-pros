@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import roofingImage1 from "@/assets/portfolio-roofing-1.jpg";
 import roofingImage2 from "@/assets/portfolio-roofing-2.jpg";
 import aduImage1 from "@/assets/portfolio-adu-1.jpg";
@@ -12,42 +13,48 @@ const Portfolio = () => {
       title: "Roof Installation Project",
       category: "Roofing",
       image: roofingImage1,
-      description: "Complete roof replacement with high-quality materials"
+      description: "Complete roof replacement with high-quality materials",
+      link: "/roofing"
     },
     {
       id: 2,
       title: "Residential Roof Renovation",
       category: "Roofing", 
       image: roofingImage2,
-      description: "Modern tile roofing installation"
+      description: "Modern tile roofing installation",
+      link: "/roofing"
     },
     {
       id: 3,
       title: "ADU Construction",
       category: "Construction",
       image: aduImage1,
-      description: "Accessory dwelling unit construction project"
+      description: "Accessory dwelling unit construction project",
+      link: "/adu-construction"
     },
     {
       id: 4,
       title: "Kitchen Remodeling",
       category: "Remodeling",
       image: kitchenImage1,
-      description: "Complete kitchen renovation with modern design"
+      description: "Complete kitchen renovation with modern design",
+      link: "/kitchen-remodeling"
     },
     {
       id: 5,
       title: "Bathroom Renovation",
       category: "Remodeling",
       image: bathroomImage1,
-      description: "Luxury bathroom remodeling project"
+      description: "Luxury bathroom remodeling project",
+      link: "/bathroom-renovation"
     },
     {
       id: 6,
       title: "Room Addition",
       category: "Construction",
       image: additionImage1,
-      description: "Home extension and room addition project"
+      description: "Home extension and room addition project",
+      link: "/room-addition"
     }
   ];
 
@@ -65,9 +72,10 @@ const Portfolio = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {portfolioItems.map((item) => (
-            <div
+            <Link
               key={item.id}
-              className="group bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+              to={item.link}
+              className="group bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 block"
             >
               <div className="relative overflow-hidden">
                 <img
@@ -90,7 +98,7 @@ const Portfolio = () => {
                   {item.description}
                 </p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
