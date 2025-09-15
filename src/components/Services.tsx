@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Home, Wrench, Hammer, Droplets, Flame, Plus } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   const services = [
@@ -8,37 +9,43 @@ const Services = () => {
       icon: <Home className="w-8 h-8" />,
       title: "Roofing Services",
       description: "Complete roofing solutions including installation, repair, and maintenance. Regional contractor for Polyglass roofing products with extended warranties.",
-      features: ["New Roof Installation", "Roof Repairs", "Roof Maintenance", "Polyglass Products", "Extended Warranties"]
+      features: ["New Roof Installation", "Roof Repairs", "Roof Maintenance", "Polyglass Products", "Extended Warranties"],
+      portfolioLink: "/roofing"
     },
     {
       icon: <Plus className="w-8 h-8" />,
       title: "ADU Construction",
       description: "Accessory Dwelling Units (ADUs) to maximize your property value and create additional living space for family or rental income.",
-      features: ["Design & Planning", "Permit Assistance", "Complete Construction", "Electrical & Plumbing", "Final Inspections"]
+      features: ["Design & Planning", "Permit Assistance", "Complete Construction", "Electrical & Plumbing", "Final Inspections"],
+      portfolioLink: "/adu-construction"
     },
     {
       icon: <Hammer className="w-8 h-8" />,
       title: "Room Additions",
       description: "Expand your living space with professional room additions that seamlessly integrate with your existing home structure.",
-      features: ["Family Rooms", "Bedrooms", "Home Offices", "Sunrooms", "Second Stories"]
+      features: ["Family Rooms", "Bedrooms", "Home Offices", "Sunrooms", "Second Stories"],
+      portfolioLink: "/room-addition"
     },
     {
       icon: <Home className="w-8 h-8" />,
       title: "New Construction",
       description: "Ground-up construction services for residential projects, bringing your dream home to life with quality craftsmanship.",
-      features: ["Custom Homes", "Site Preparation", "Foundation Work", "Framing", "Complete Build-Out"]
+      features: ["Custom Homes", "Site Preparation", "Foundation Work", "Framing", "Complete Build-Out"],
+      portfolioLink: null
     },
     {
       icon: <Wrench className="w-8 h-8" />,
       title: "Kitchen & Bath Remodeling",
       description: "Transform your kitchen and bathroom spaces with modern designs, quality materials, and expert installation.",
-      features: ["Kitchen Renovation", "Bathroom Remodel", "Cabinet Installation", "Countertop Installation", "Tile Work"]
+      features: ["Kitchen Renovation", "Bathroom Remodel", "Cabinet Installation", "Countertop Installation", "Tile Work"],
+      portfolioLink: "/kitchen-remodeling"
     },
     {
       icon: <Droplets className="w-8 h-8" />,
       title: "Fire & Water Restoration",
       description: "Emergency restoration services to restore your property after fire or water damage with quick response times.",
-      features: ["Emergency Response", "Water Extraction", "Fire Damage Repair", "Smoke Remediation", "Complete Restoration"]
+      features: ["Emergency Response", "Water Extraction", "Fire Damage Repair", "Smoke Remediation", "Complete Restoration"],
+      portfolioLink: null
     }
   ];
 
@@ -85,6 +92,17 @@ const Services = () => {
                 >
                   Get Quote
                 </Button>
+                {service.portfolioLink && (
+                  <Button 
+                    asChild
+                    variant="outline"
+                    className="w-full mt-2 border-construction-blue text-construction-blue hover:bg-construction-blue hover:text-white"
+                  >
+                    <Link to={service.portfolioLink}>
+                      View Work Samples
+                    </Link>
+                  </Button>
+                )}
               </CardContent>
             </Card>
           ))}
