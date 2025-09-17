@@ -13,7 +13,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <img 
-              src="/lovable-uploads/d3c9e278-96c2-43e6-91db-b3fb5d37e0df.png" 
+              src="/lovable-uploads/merit-logo.jpg" 
               alt="Merit Construction & Design Logo" 
               className="h-10 md:h-12 w-auto"
             />
