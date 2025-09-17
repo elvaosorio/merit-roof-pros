@@ -55,7 +55,7 @@ const Contact = () => {
                   <div>
                     <p className="font-semibold text-construction-dark">Address</p>
                     <p className="text-muted-foreground">
-                      1452 Volney Dr.<br />
+                      Volney Dr.<br />
                       Los Angeles, CA 90063
                     </p>
                   </div>

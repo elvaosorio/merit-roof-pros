@@ -30,11 +30,12 @@ const Certificates = () => {
     },
     {
       icon: <Star className="w-8 h-8" />,
-      title: "Additional Certifications",
-      number: "In Progress",
-      issuer: "Various Suppliers",
-      status: "Pending",
-      description: "Actively pursuing certifications with additional roofing and construction material suppliers"
+      title: "Owens Corning Preferred Contractor",
+      number: "",
+      issuer: "Owens Corning Roofing",
+      status: "Certified",
+      description: "Recognized for meeting high standards of professionalism, reliability, and craftsmanship. Provides access to premium Owens Corning products and extended warranty options."
+
     }
   ];
 
