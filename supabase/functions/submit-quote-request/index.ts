@@ -60,7 +60,7 @@ const handler = async (req: Request): Promise<Response> => {
     // Send email notification to business owner
     const businessEmailResponse = await resend.emails.send({
       from: "Merit Construction <noreply@resend.dev>",
-      to: ["osorioelva@gmail.com"],
+      to: ["pablo323diaz@gmail.com"],
       subject: "New Quote Request - Merit Construction",
       html: `
         <h1>New Quote Request</h1>
@@ -95,7 +95,7 @@ const handler = async (req: Request): Promise<Response> => {
         <p><strong>Service:</strong> ${service || "Not specified"}</p>
         <p><strong>Message:</strong> ${message}</p>
         
-        <p>If you have any urgent questions, please call us at <a href="tel:3236109999">(323) 610-9999</a>.</p>
+        <p>If you have any urgent questions, please call us at <a href="tel:3236106750">(323) 610-6750</a>.</p>
         
         <p>Best regards,<br>
         Merit Construction & Design Team<br>

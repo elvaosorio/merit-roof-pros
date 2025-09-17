@@ -17,14 +17,14 @@ const Services = () => {
       title: "ADU Construction",
       description: "Accessory Dwelling Units (ADUs) to maximize your property value and create additional living space for family or rental income.",
       features: ["Design & Planning", "Permit Assistance", "Complete Construction", "Electrical & Plumbing", "Final Inspections"],
-      portfolioLink: "/adu-construction"
+      portfolioLink: null //"/adu-construction"
     },
     {
       icon: <Hammer className="w-8 h-8" />,
       title: "Room Additions",
       description: "Expand your living space with professional room additions that seamlessly integrate with your existing home structure.",
       features: ["Family Rooms", "Bedrooms", "Home Offices", "Sunrooms", "Second Stories"],
-      portfolioLink: "/room-addition"
+      portfolioLink: null//"/room-addition"
     },
     {
       icon: <Home className="w-8 h-8" />,
@@ -38,7 +38,7 @@ const Services = () => {
       title: "Kitchen & Bath Remodeling",
       description: "Transform your kitchen and bathroom spaces with modern designs, quality materials, and expert installation.",
       features: ["Kitchen Renovation", "Bathroom Remodel", "Cabinet Installation", "Countertop Installation", "Tile Work"],
-      portfolioLink: "/kitchen-remodeling"
+      portfolioLink: null //"/kitchen-remodeling"
     },
     {
       icon: <Droplets className="w-8 h-8" />,

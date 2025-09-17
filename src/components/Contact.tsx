@@ -30,8 +30,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="font-semibold text-construction-dark">Phone</p>
-                    <a href="tel:3236109999" className="text-construction-blue hover:underline">
-                      (323) 610-9999
+                    <a href="tel:3236106750" className="text-construction-blue hover:underline">
+                      (323) 610-6750
                     </a>
                   </div>
                 </div>
@@ -42,8 +42,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="font-semibold text-construction-dark">Email</p>
-                    <a href="mailto:osorioelva@gmail.com" className="text-construction-blue hover:underline">
-                      osorioelva@gmail.com
+                    <a href="mailto:pablo323diaz@gmail.com" className="text-construction-blue hover:underline">
+                      pablo323diaz@gmail.com
                     </a>
                   </div>
                 </div>
@@ -111,9 +111,9 @@ const Contact = () => {
                   asChild
                   className="w-full bg-construction-blue hover:bg-construction-blue/90 text-white py-4 text-lg font-semibold"
                 >
-                  <a href="tel:3236109999">
+                  <a href="tel:3236106750">
                     <Phone className="w-5 h-5 mr-2" />
-                    Call Now: (323) 610-9999
+                    Call Now: (323) 610-6750
                   </a>
                 </Button>
                 
@@ -122,7 +122,7 @@ const Contact = () => {
                   variant="outline"
                   className="w-full border-construction-blue text-construction-blue hover:bg-construction-blue/10 py-4 text-lg font-semibold"
                 >
-                  <a href="mailto:osorioelva@gmail.com">
+                  <a href="mailto:pablo323diaz@gmail.com">
                     <Mail className="w-5 h-5 mr-2" />
                     Send Email
                   </a>

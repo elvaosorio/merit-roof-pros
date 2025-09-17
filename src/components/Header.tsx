@@ -13,7 +13,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <img 
-              src="/lovable-uploads/merit-logo.jpg" 
+              src="/lovable-uploads/merit-logo.png" 
               alt="Merit Construction & Design Logo" 
               className="h-10 md:h-12 w-auto"
             />
@@ -50,9 +50,9 @@ const Header = () => {
           </nav>
 
           <div className="flex items-center space-x-2">
-            <a href="tel:3236109999" className="hidden md:flex items-center text-sm text-foreground hover:text-construction-blue">
+            <a href="tel:3236106750" className="hidden md:flex items-center text-sm text-foreground hover:text-construction-blue">
               <Phone className="w-4 h-4 mr-1" />
-              (323) 610-9999
+              (323) 610-6750
             </a>
             <Button onClick={() => scrollToSection('contact')} className="bg-construction-blue hover:bg-construction-blue/90">
               Get Quote

@@ -1,14 +1,30 @@
-import roofingImage1 from "@/assets/portfolio-roofing-1.jpg";
-import roofingImage2 from "@/assets/portfolio-roofing-2.jpg";
+import roofingImage1 from "@/assets/0bcf6d8f-f227-4752-a50e-6f451a7a4791.jpg";
+import roofingImage2 from "@/assets/2acecf0e-5a9a-481b-b61b-95b3e0779253.jpg";
+import roofingImage3 from "@/assets/4cf41a36-aa41-46e8-aca3-18d7d1df0708.jpg";
+import roofingImage4 from "@/assets/7fb78086-5695-4315-b8a6-499cbd9574fd.jpg";
+import roofingImage5 from "@/assets/13d89e30-cf5f-4a32-87b7-0e8bc14a13cb.jpg";
+import roofingImage6 from "@/assets/36a381f1-fb32-4de0-8567-91387a5a1b71.jpg";
+import roofingImage7 from "@/assets/934e8fe5-6453-497d-a40c-92bfe8d4ff23.jpg";
+import roofingImage8 from "@/assets/b5cb2986-a48b-44ee-a69f-1f2f78056ccf.jpg";
+import roofingImage9 from "@/assets/c8aa7cff-bdc7-434f-84be-2f6e73d92b6a.jpg";
+import roofingImage10 from "@/assets/IMG_5746.JPG";
+import roofingImage11 from "@/assets/IMG_5747.JPG";
+import roofingImage12 from "@/assets/IMG_5749.JPG";
 
 const Roofing = () => {
   const images = [
     roofingImage1,
     roofingImage2,
-    roofingImage1, // Placeholder - will be replaced with actual photos
-    roofingImage2,
-    roofingImage1,
-    roofingImage2,
+    roofingImage3, // Placeholder - will be replaced with actual photos
+    roofingImage4,
+    roofingImage5,
+    roofingImage6,
+    roofingImage7,
+    roofingImage8,
+    roofingImage9,
+    roofingImage10,
+    roofingImage11,
+    roofingImage12
   ];
 
   return (

@@ -31,14 +31,14 @@ const Footer = () => {
             <div className="space-y-3 text-white/80">
               <div className="flex items-center">
                 <Phone className="w-5 h-5 mr-3 text-construction-accent" />
-                <a href="tel:3236109999" className="hover:text-construction-accent transition-colors">
-                  (323) 610-9999
+                <a href="tel:3236106750" className="hover:text-construction-accent transition-colors">
+                  (323) 610-6750
                 </a>
               </div>
               <div className="flex items-center">
                 <Mail className="w-5 h-5 mr-3 text-construction-accent" />
-                <a href="mailto:osorioelva@gmail.com" className="hover:text-construction-accent transition-colors">
-                  osorioelva@gmail.com
+                <a href="mailto:pablo323diaz@gmail.com" className="hover:text-construction-accent transition-colors">
+                  pablo323diaz@gmail.com
                 </a>
               </div>
               <div className="flex items-start">
